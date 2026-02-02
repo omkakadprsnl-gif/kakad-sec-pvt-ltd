@@ -5,24 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kakad Security PVT LTD | Maharashtra's Premier Security Agency</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #0A2342;
-            --primary-dark: #061B2F;
+            --primary-dark: #051226;
+            --primary-light: #1A3A5F;
             --secondary: #D90429;
+            --secondary-dark: #B00222;
             --accent: #2A9D8F;
             --accent-light: #4CCFC2;
             --light: #F8F9FA;
             --dark: #212529;
             --gray: #6C757D;
             --light-gray: #E9ECEF;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            --border-radius: 12px;
-            --section-padding: 100px 0;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 16px;
+            --border-radius-sm: 12px;
+            --section-padding: 80px 0;
         }
         
         * {
@@ -33,49 +37,50 @@
         
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--dark);
             background-color: #fff;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             letter-spacing: -0.5px;
         }
         
         h2 {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             position: relative;
-            display: inline-block;
         }
         
         h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
         
         p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
         
         .container {
             width: 100%;
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
         
         section {
@@ -84,13 +89,14 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .section-header h2 {
             color: var(--primary);
             position: relative;
             padding-bottom: 15px;
+            display: inline-block;
         }
         
         .section-header h2:after {
@@ -108,7 +114,8 @@
         .section-header p {
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            color: var(--gray);
         }
         
         /* Header Styles */
@@ -119,46 +126,47 @@
             width: 100%;
             z-index: 1000;
             background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
+            padding: 10px 0;
         }
         
         header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 8px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            transition: var(--transition);
+            padding: 5px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
+            z-index: 1001;
         }
         
         .logo-icon {
-            width: 55px;
-            height: 55px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 12px;
+            border-radius: var(--border-radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             box-shadow: var(--shadow);
         }
         
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0;
             color: var(--primary);
         }
@@ -166,23 +174,23 @@
         .logo-text span {
             color: var(--secondary);
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-top: 3px;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 30px;
         }
         
         nav a {
             text-decoration: none;
             color: var(--primary);
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
             position: relative;
             padding: 5px 0;
             transition: var(--transition);
@@ -194,7 +202,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
+            height: 2px;
             background: linear-gradient(90deg, var(--secondary), var(--accent));
             transition: var(--transition);
             border-radius: 2px;
@@ -211,7 +219,7 @@
         .header-cta {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         
         .phone-number {
@@ -220,7 +228,8 @@
             gap: 8px;
             font-weight: 700;
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
+            white-space: nowrap;
         }
         
         .phone-number i {
@@ -228,24 +237,27 @@
         }
         
         .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--secondary), #C1121F);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-dark));
             color: white;
-            padding: 14px 32px;
-            border-radius: var(--border-radius);
+            padding: 14px 28px;
+            border-radius: var(--border-radius-sm);
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(217, 4, 41, 0.2);
+            box-shadow: 0 5px 15px rgba(217, 4, 41, 0.2);
+            gap: 8px;
         }
         
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(217, 4, 41, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.3);
         }
         
         .btn-outline {
@@ -258,24 +270,34 @@
         .btn-outline:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary);
             cursor: pointer;
             z-index: 1001;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: rgba(10, 35, 66, 0.05);
         }
         
         /* Hero Section */
         .hero {
-            padding-top: 180px;
-            padding-bottom: 120px;
-            background: linear-gradient(135deg, rgba(10, 35, 66, 0.95) 0%, rgba(6, 27, 47, 0.95) 100%), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.97) 0%, rgba(5, 18, 38, 0.97) 100%), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -290,115 +312,126 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px;
+            height: 100px;
             background: linear-gradient(to top, white, transparent);
         }
         
         .hero-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            gap: 60px;
+            text-align: center;
+            gap: 50px;
         }
         
         .hero-content {
-            flex: 1;
-            max-width: 650px;
+            max-width: 800px;
         }
         
         .hero h1 {
-            font-size: 3.8rem;
-            margin-bottom: 25px;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             color: white;
             line-height: 1.1;
         }
         
         .hero p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
         }
         
         .hero-btns {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-bottom: 40px;
+            justify-content: center;
         }
         
         .hero-stats {
             display: flex;
-            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
             margin-top: 40px;
         }
         
         .stat-item {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-width: 140px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: white;
             line-height: 1;
         }
         
         .stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 5px;
+            text-align: center;
         }
         
         .hero-image {
-            flex: 1;
+            width: 100%;
+            max-width: 800px;
             position: relative;
         }
         
         .hero-visual {
             width: 100%;
-            height: 500px;
+            height: 300px;
             background: linear-gradient(135deg, rgba(42, 157, 143, 0.1), rgba(217, 4, 41, 0.1));
-            border-radius: 20px;
+            border-radius: var(--border-radius);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         
         .security-badge {
             position: absolute;
             background: white;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            padding: 15px;
             box-shadow: var(--shadow-hover);
             animation: float 6s ease-in-out infinite;
             opacity: 0;
             transform: translateY(20px);
+            width: 160px;
         }
         
         .badge-1 {
             top: 10%;
             left: 5%;
-            width: 180px;
             animation-delay: 0s;
         }
         
         .badge-2 {
-            top: 50%;
-            right: 10%;
-            width: 200px;
+            top: 40%;
+            right: 5%;
             animation-delay: 1s;
         }
         
         .badge-3 {
-            bottom: 15%;
-            left: 15%;
-            width: 160px;
+            bottom: 10%;
+            left: 10%;
             animation-delay: 2s;
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
         
         /* Services Section */
@@ -408,19 +441,20 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .service-card {
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
             transition: var(--transition);
             height: 100%;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .service-card.animated {
@@ -429,66 +463,69 @@
         }
         
         .service-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
         }
         
         .service-icon {
-            height: 120px;
+            height: 100px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: white;
         }
         
         .service-content {
-            padding: 30px;
+            padding: 25px;
         }
         
         .service-content h3 {
             color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
         }
         
         .service-features {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .service-features li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
+            font-size: 0.95rem;
         }
         
         .service-features i {
             color: var(--accent);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
         
         /* About Section */
         .about-container {
             display: flex;
-            align-items: center;
-            gap: 80px;
+            flex-direction: column;
+            gap: 50px;
         }
         
         .about-content {
-            flex: 1;
+            order: 2;
         }
         
         .about-image {
-            flex: 1;
+            order: 1;
             position: relative;
         }
         
         .about-img-main {
             width: 100%;
-            height: 500px;
+            height: 350px;
             border-radius: var(--border-radius);
             object-fit: cover;
             box-shadow: var(--shadow-hover);
@@ -497,55 +534,56 @@
         .about-badge {
             position: absolute;
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-hover);
-            width: 300px;
+            width: 250px;
             opacity: 0;
             transform: scale(0.8);
+            border-left: 4px solid var(--secondary);
         }
         
         .badge-experience {
-            bottom: -40px;
-            left: -40px;
-            border-left: 5px solid var(--secondary);
+            bottom: -20px;
+            left: 5%;
+            border-left-color: var(--secondary);
         }
         
         .badge-location {
-            top: -40px;
-            right: -40px;
-            border-left: 5px solid var(--accent);
+            top: -20px;
+            right: 5%;
+            border-left-color: var(--accent);
         }
         
         /* Booking Section */
         .booking {
-            background: linear-gradient(135deg, rgba(10, 35, 66, 0.03) 0%, rgba(6, 27, 47, 0.03) 100%);
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.03) 0%, rgba(5, 18, 38, 0.03) 100%);
         }
         
         .booking-container {
             display: flex;
-            gap: 80px;
-            align-items: center;
+            flex-direction: column;
+            gap: 50px;
         }
         
         .booking-form-container {
-            flex: 1;
             background: white;
-            padding: 50px;
+            padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-hover);
         }
         
         .booking-steps {
-            flex: 1;
+            order: -1;
         }
         
         .step {
             display: flex;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 15px;
+            margin-bottom: 30px;
             opacity: 0;
             transform: translateX(-20px);
+            align-items: flex-start;
         }
         
         .step.animated {
@@ -554,21 +592,21 @@
         }
         
         .step-number {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--accent), var(--accent-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             flex-shrink: 0;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
@@ -576,16 +614,18 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.95rem;
         }
         
         .form-control {
             width: 100%;
-            padding: 16px 20px;
+            padding: 14px 18px;
             border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-sm);
             font-size: 1rem;
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
+            background-color: #fff;
         }
         
         .form-control:focus {
@@ -596,27 +636,28 @@
         
         .form-row {
             display: flex;
+            flex-direction: column;
             gap: 20px;
         }
         
         /* Contact Section */
         .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
         }
         
         .contact-info {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 50px;
+            padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-hover);
         }
         
         .contact-info h3 {
             color: white;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
             padding-bottom: 15px;
         }
@@ -626,21 +667,21 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: var(--secondary);
             border-radius: 2px;
         }
         
         .contact-details {
-            margin-top: 30px;
+            margin-top: 25px;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 25px;
             opacity: 0;
             transform: translateX(-20px);
         }
@@ -651,14 +692,14 @@
         }
         
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: white;
             flex-shrink: 0;
         }
@@ -667,14 +708,14 @@
         footer {
             background: var(--primary-dark);
             color: white;
-            padding: 80px 0 30px;
+            padding: 60px 0 20px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-logo .logo-text h1 {
@@ -683,8 +724,8 @@
         
         .footer-links h4 {
             color: white;
-            margin-bottom: 25px;
-            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
         }
         
         .footer-links ul {
@@ -692,7 +733,7 @@
         }
         
         .footer-links li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
@@ -700,25 +741,26 @@
             text-decoration: none;
             transition: var(--transition);
             display: inline-block;
+            font-size: 0.95rem;
         }
         
         .footer-links a:hover {
             color: white;
-            transform: translateX(5px);
+            transform: translateX(3px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         /* Page Transitions */
         .page {
             display: none;
-            animation: fadeIn 0.8s ease;
+            animation: fadeIn 0.5s ease;
         }
         
         .page.active {
@@ -726,53 +768,54 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         /* Advantages Section */
         .advantages {
-            padding: 80px 0;
+            padding: 60px 0;
         }
         
         .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .advantage-card {
             text-align: center;
-            padding: 40px 30px;
+            padding: 30px 25px;
             background: white;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
             transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .advantage-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
         }
         
         .advantage-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--accent), var(--accent-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
             color: white;
         }
         
         /* FAQ Section */
         .faq-section {
-            background: linear-gradient(135deg, rgba(10, 35, 66, 0.03) 0%, rgba(6, 27, 47, 0.03) 100%);
-            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.03) 0%, rgba(5, 18, 38, 0.03) 100%);
+            padding: 60px 0;
         }
         
         .faq-container {
@@ -782,14 +825,15 @@
         
         .faq-item {
             background: white;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .faq-question {
-            padding: 25px 30px;
+            padding: 20px 25px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -805,17 +849,18 @@
         
         .faq-question i {
             transition: var(--transition);
+            color: var(--accent);
         }
         
         .faq-answer {
-            padding: 0 30px;
+            padding: 0 25px;
             max-height: 0;
             overflow: hidden;
             transition: var(--transition);
         }
         
         .faq-item.active .faq-answer {
-            padding: 0 30px 25px;
+            padding: 0 25px 20px;
             max-height: 500px;
         }
         
@@ -826,18 +871,18 @@
         /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            width: 56px;
+            height: 56px;
             background: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
             transition: var(--transition);
             z-index: 997;
             text-decoration: none;
@@ -845,62 +890,156 @@
         
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
         
         /* Pricing Note */
         .pricing-note {
-            background: linear-gradient(135deg, rgba(42, 157, 143, 0.1), rgba(217, 4, 41, 0.1));
-            padding: 25px;
-            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(217, 4, 41, 0.08));
+            padding: 18px;
+            border-radius: var(--border-radius-sm);
             text-align: center;
+            margin-top: 20px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(10, 35, 66, 0.3);
+            transition: var(--transition);
+            z-index: 996;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Service Tag */
+        .service-tag {
+            display: inline-block;
+            background: rgba(42, 157, 143, 0.1);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.05) 0%, rgba(5, 18, 38, 0.05) 100%);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
-            border-left: 4px solid var(--secondary);
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
         }
         
         /* Responsive */
-        @media (max-width: 1200px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2.5rem; }
-            .hero h1 { font-size: 3.2rem; }
+        @media (min-width: 576px) {
+            h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 3rem; }
+            .hero-visual { height: 350px; }
+            .about-img-main { height: 400px; }
+            .form-row { flex-direction: row; }
         }
         
-        @media (max-width: 992px) {
-            .hero-container, .about-container, .booking-container {
-                flex-direction: column;
-            }
-            
-            .hero {
-                padding-top: 150px;
-                padding-bottom: 80px;
-            }
-            
-            .hero-content {
-                text-align: center;
-            }
-            
-            .hero-btns {
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            .hero { padding-top: 160px; }
+            .hero-container { flex-direction: row; text-align: left; }
+            .hero-content { text-align: left; }
+            .hero-btns { justify-content: flex-start; }
+            .hero-stats { justify-content: flex-start; }
+            .about-container { flex-direction: row; }
+            .about-content { order: 1; }
+            .about-image { order: 2; }
+            .booking-container { flex-direction: row; }
+            .booking-steps { order: 1; }
+            .booking-form-container { order: 2; }
+            .contact-container { flex-direction: row; }
+            .security-badge { width: 180px; padding: 20px; }
+            .about-badge { width: 280px; }
+        }
+        
+        @media (min-width: 992px) {
+            .mobile-menu-btn { display: none; }
+            nav ul { display: flex; }
+            .header-cta { display: flex; }
+            h1 { font-size: 3.2rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-visual { height: 400px; }
+            .hero-stats { justify-content: flex-start; }
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        @media (max-width: 991px) {
+            .mobile-menu-btn { display: flex; }
             
             nav ul {
                 position: fixed;
                 top: 0;
                 right: -300px;
-                width: 300px;
+                width: 280px;
                 height: 100vh;
                 background: white;
                 flex-direction: column;
-                padding: 100px 40px 40px;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                padding: 100px 30px 30px;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
                 z-index: 1000;
             }
@@ -923,16 +1062,23 @@
             .overlay.active {
                 display: block;
             }
+            
+            .header-cta .phone-number {
+                display: none;
+            }
         }
         
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2.2rem; }
-            .hero h1 { font-size: 2.8rem; }
-            .section-padding { padding: 70px 0; }
+        @media (max-width: 400px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .hero h1 { font-size: 2.3rem; }
+            .section-padding { padding: 60px 0; }
             .services-grid { grid-template-columns: 1fr; }
+            .hero-btns { flex-direction: column; }
+            .hero-btns .btn { width: 100%; }
             .form-row { flex-direction: column; gap: 0; }
-            .whatsapp-float { left: 20px; bottom: 20px; }
+            .hero-stats { flex-direction: column; align-items: center; }
+            .stat-item { width: 100%; max-width: 200px; }
         }
     </style>
 </head>
@@ -975,12 +1121,17 @@
         <div class="overlay" id="overlay"></div>
     </header>
 
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- Home Page -->
     <main id="main-content">
         <section id="home" class="page active">
             <div class="hero">
                 <div class="container hero-container">
-                    <div class="hero-content animate__animated animate__fadeInLeft">
+                    <div class="hero-content animate__animated animate__fadeIn">
                         <h1>Maharashtra's Premier Security Solutions</h1>
                         <p>Kakad Security PVT LTD provides elite security personnel for residential, commercial, and industrial sectors across Maharashtra. With over 500 trained professionals, we ensure safety through advanced technology and strategic protocols.</p>
                         <div class="hero-btns">
@@ -1002,7 +1153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero-image animate__animated animate__fadeInRight">
+                    <div class="hero-image animate__animated animate__fadeIn">
                         <div class="hero-visual" id="heroVisual">
                             <div class="security-badge badge-1" id="badge1">
                                 <h4><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i> Verified Guards</h4>
@@ -1078,6 +1229,7 @@
                                 <i class="fas fa-home"></i>
                             </div>
                             <div class="service-content">
+                                <div class="service-tag">Residential Security</div>
                                 <h3>Housing Society Security</h3>
                                 <p>Complete residential security with access control and trained guards for apartments, gated communities, and housing societies.</p>
                                 <ul class="service-features">
@@ -1086,7 +1238,7 @@
                                     <li><i class="fas fa-check"></i> Emergency response protocols</li>
                                 </ul>
                                 <div class="pricing-note">
-                                    <strong>Starting from ₹#### per guard</strong>
+                                    <strong>Starting from ₹18,000 per guard/month</strong>
                                 </div>
                             </div>
                         </div>
@@ -1096,6 +1248,7 @@
                                 <i class="fas fa-industry"></i>
                             </div>
                             <div class="service-content">
+                                <div class="service-tag">Industrial Security</div>
                                 <h3>Industrial Security</h3>
                                 <p>Factory, warehouse, and manufacturing unit protection with perimeter security, asset safeguarding, and fire safety protocols.</p>
                                 <ul class="service-features">
@@ -1104,7 +1257,7 @@
                                     <li><i class="fas fa-check"></i> Hazard prevention measures</li>
                                 </ul>
                                 <div class="pricing-note">
-                                    <strong>Starting from ₹#### per guard</strong>
+                                    <strong>Starting from ₹20,000 per guard/month</strong>
                                 </div>
                             </div>
                         </div>
@@ -1114,6 +1267,7 @@
                                 <i class="fas fa-hospital"></i>
                             </div>
                             <div class="service-content">
+                                <div class="service-tag">Healthcare Security</div>
                                 <h3>Hospital Security</h3>
                                 <p>Specialized healthcare facility security ensuring patient safety, staff protection, and medical equipment security.</p>
                                 <ul class="service-features">
@@ -1122,7 +1276,58 @@
                                     <li><i class="fas fa-check"></i> Emergency medical response coordination</li>
                                 </ul>
                                 <div class="pricing-note">
-                                    <strong>Starting from ₹#### per guard</strong>
+                                    <strong>Starting from ₹22,000 per guard/month</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Client Testimonials</h2>
+                        <p>See what our clients across Maharashtra have to say about our security services</p>
+                    </div>
+                    
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card animate-on-scroll">
+                            <div class="testimonial-text">
+                                "Kakad Security has been protecting our housing society in Pune for 3 years now. Their guards are professional, well-trained, and responsive. Highly recommended!"
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                                <div>
+                                    <h5>Rajesh Sharma</h5>
+                                    <p>Resident, Pune</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card animate-on-scroll">
+                            <div class="testimonial-text">
+                                "As a hospital administrator in Nagpur, patient safety is our top priority. Kakad Security provides exceptional service with specialized healthcare security protocols."
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                                <div>
+                                    <h5>Dr. Priya Deshmukh</h5>
+                                    <p>Hospital Administrator, Nagpur</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card animate-on-scroll">
+                            <div class="testimonial-text">
+                                "Our factory in Aurangabad required 24/7 security. Kakad Security deployed trained guards within hours. Their professional approach gives us peace of mind."
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client">
+                                <div>
+                                    <h5>Vikram Patil</h5>
+                                    <p>Factory Owner, Aurangabad</p>
                                 </div>
                             </div>
                         </div>
@@ -1168,26 +1373,6 @@
                                 <p>Yes, all our security guards undergo thorough background checks, police verification, and regular training in security protocols and emergency response.</p>
                             </div>
                         </div>
-                        
-                        <div class="faq-item animate-on-scroll">
-                            <div class="faq-question">
-                                <span>What is the pricing structure?</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Pricing starts from ₹#### per guard per month, depending on the service type, duration, and specific requirements. Contact us for a customized quote.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item animate-on-scroll">
-                            <div class="faq-question">
-                                <span>Do you provide short-term security?</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, we provide both short-term (days/weeks) and long-term (months/years) security solutions tailored to your needs.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -1207,6 +1392,7 @@
                             <i class="fas fa-university"></i>
                         </div>
                         <div class="service-content">
+                            <div class="service-tag">Financial Security</div>
                             <h3>Bank & Financial Security</h3>
                             <p>Complete bank branch security including cash handling protection, surveillance monitoring, and crowd management during peak hours.</p>
                             <ul class="service-features">
@@ -1215,7 +1401,7 @@
                                 <li><i class="fas fa-check"></i> Vault security protocols</li>
                             </ul>
                             <div class="pricing-note">
-                                <strong>Starting from ₹#### per guard</strong>
+                                <strong>Starting from ₹25,000 per guard/month</strong>
                             </div>
                         </div>
                     </div>
@@ -1225,6 +1411,7 @@
                             <i class="fas fa-school"></i>
                         </div>
                         <div class="service-content">
+                            <div class="service-tag">Education Security</div>
                             <h3>Educational Institution Security</h3>
                             <p>Campus security for schools, colleges, and universities with student safety as top priority and controlled access systems.</p>
                             <ul class="service-features">
@@ -1233,7 +1420,7 @@
                                 <li><i class="fas fa-check"></i> Emergency lockdown procedures</li>
                             </ul>
                             <div class="pricing-note">
-                                <strong>Starting from ₹#### per guard</strong>
+                                <strong>Starting from ₹19,000 per guard/month</strong>
                             </div>
                         </div>
                     </div>
@@ -1243,6 +1430,7 @@
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                         <div class="service-content">
+                            <div class="service-tag">Retail Security</div>
                             <h3>Mall & Retail Security</h3>
                             <p>Shopping center security with crowd management, surveillance, asset protection, and emergency response coordination.</p>
                             <ul class="service-features">
@@ -1251,7 +1439,7 @@
                                 <li><i class="fas fa-check"></i> Parking lot security</li>
                             </ul>
                             <div class="pricing-note">
-                                <strong>Starting from ₹#### per guard</strong>
+                                <strong>Starting from ₹21,000 per guard/month</strong>
                             </div>
                         </div>
                     </div>
@@ -1261,6 +1449,7 @@
                             <i class="fas fa-hotel"></i>
                         </div>
                         <div class="service-content">
+                            <div class="service-tag">Hospitality Security</div>
                             <h3>Hotel & Hospitality Security</h3>
                             <p>Luxury hotel and resort security with guest safety, asset protection, and event security management.</p>
                             <ul class="service-features">
@@ -1269,7 +1458,7 @@
                                 <li><i class="fas fa-check"></i> VIP protection services</li>
                             </ul>
                             <div class="pricing-note">
-                                <strong>Starting from ₹#### per guard</strong>
+                                <strong>Starting from ₹23,000 per guard/month</strong>
                             </div>
                         </div>
                     </div>
@@ -1279,6 +1468,7 @@
                             <i class="fas fa-truck"></i>
                         </div>
                         <div class="service-content">
+                            <div class="service-tag">Logistics Security</div>
                             <h3>Logistics & Warehouse Security</h3>
                             <p>Supply chain security for warehouses, distribution centers, and logistics hubs with inventory protection.</p>
                             <ul class="service-features">
@@ -1287,7 +1477,7 @@
                                 <li><i class="fas fa-check"></i> Vehicle tracking & security</li>
                             </ul>
                             <div class="pricing-note">
-                                <strong>Starting from ₹#### per guard</strong>
+                                <strong>Starting from ₹20,000 per guard/month</strong>
                             </div>
                         </div>
                     </div>
@@ -1297,6 +1487,7 @@
                             <i class="fas fa-calendar-alt"></i>
                         </div>
                         <div class="service-content">
+                            <div class="service-tag">Event Security</div>
                             <h3>Event Security</h3>
                             <p>Temporary security for weddings, corporate events, concerts, and public gatherings with crowd control.</p>
                             <ul class="service-features">
@@ -1305,13 +1496,13 @@
                                 <li><i class="fas fa-check"></i> Emergency medical coordination</li>
                             </ul>
                             <div class="pricing-note">
-                                <strong>Starting from ₹#### per guard per day</strong>
+                                <strong>Starting from ₹1,500 per guard/day</strong>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="section-header" style="margin-top: 80px;">
+                <div class="section-header" style="margin-top: 60px;">
                     <h2>Service Duration Options</h2>
                     <p>Flexible security solutions tailored to your specific timeline and requirements</p>
                 </div>
@@ -1362,7 +1553,7 @@
                 
                 <div class="about-container">
                     <div class="about-content">
-                        <h3>Your Security, Our top priority</h3>
+                        <h3>Your Security, Our Priority</h3>
                         <p>Founded in Jalna, Kakad Security PVT LTD has grown to become one of Maharashtra's most respected security service providers. With our headquarters in Jalna, we serve clients across the entire state, from Mumbai to Nagpur, Pune to Aurangabad.</p>
                         
                         <p>Our team of over 500 rigorously trained security professionals undergoes continuous training in modern security protocols, emergency response, and customer service. Each guard is background verified and equipped with the knowledge to handle diverse security scenarios.</p>
@@ -1477,12 +1668,12 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button type="submit" class="btn" style="width: 100%; padding: 18px; font-size: 1.1rem;">
+                                    <button type="submit" class="btn" style="width: 100%; padding: 16px; font-size: 1.05rem;">
                                         <i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Submit Security Request
                                     </button>
                                 </div>
                                 
-                                <p style="text-align: center; font-size: 0.95rem; color: var(--gray); margin-top: 20px;">
+                                <p style="text-align: center; font-size: 0.9rem; color: var(--gray); margin-top: 20px;">
                                     <i class="fas fa-info-circle" style="margin-right: 8px;"></i> We serve exclusively in Maharashtra. Our team will contact you within 2 hours of submission.
                                 </p>
                             </form>
@@ -1523,10 +1714,10 @@
                                 </div>
                             </div>
                             
-                            <div style="background: linear-gradient(135deg, rgba(10, 35, 66, 0.05), rgba(6, 27, 47, 0.05)); padding: 30px; border-radius: var(--border-radius); margin-top: 40px;">
+                            <div style="background: linear-gradient(135deg, rgba(10, 35, 66, 0.05), rgba(5, 18, 38, 0.05)); padding: 25px; border-radius: var(--border-radius); margin-top: 30px;">
                                 <h4><i class="fas fa-headset" style="color: var(--secondary); margin-right: 10px;"></i> Need Immediate Assistance?</h4>
                                 <p>Call our 24/7 security hotline for urgent requirements or consultation.</p>
-                                <div class="phone-number" style="font-size: 1.4rem; margin-top: 15px;">
+                                <div class="phone-number" style="font-size: 1.3rem; margin-top: 15px;">
                                     <i class="fas fa-phone-alt"></i>
                                     <span style="font-weight: 800;">96078 10111</span>
                                 </div>
@@ -1592,7 +1783,7 @@
                             </div>
                         </div>
                         
-                        <div style="margin-top: 40px; padding: 25px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius);">
+                        <div style="margin-top: 30px; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius);">
                             <h4><i class="fas fa-clock" style="margin-right: 10px;"></i> Operational Hours</h4>
                             <p>24/7 Security Operations<br>
                             Office Hours: 9:00 AM - 7:00 PM (Mon-Sat)</p>
@@ -1604,22 +1795,22 @@
                         <form id="contactForm" action="https://formspree.io/f/xaqoaeng" method="POST">
                             <div class="form-group">
                                 <label for="contactName">Your Name *</label>
-                                <input type="text" id="contactName" name="name" class="form-control" required>
+                                <input type="text" id="contactName" name="name" class="form-control" required placeholder="Enter your full name">
                             </div>
                             
                             <div class="form-group">
                                 <label for="contactPhone">Phone Number *</label>
-                                <input type="tel" id="contactPhone" name="phone" class="form-control" required>
+                                <input type="tel" id="contactPhone" name="phone" class="form-control" required placeholder="96078 10111">
                             </div>
                             
                             <div class="form-group">
                                 <label for="contactEmail">Email Address *</label>
-                                <input type="email" id="contactEmail" name="email" class="form-control" required>
+                                <input type="email" id="contactEmail" name="email" class="form-control" required placeholder="your@email.com">
                             </div>
                             
                             <div class="form-group">
                                 <label for="contactLocation">Your Location in Maharashtra *</label>
-                                <input type="text" id="contactLocation" name="location" class="form-control" required>
+                                <input type="text" id="contactLocation" name="location" class="form-control" required placeholder="City / District">
                             </div>
                             
                             <div class="form-group">
@@ -1718,236 +1909,263 @@
     </a>
 
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        // Mobile-first improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                const scrollTop = document.getElementById('scrollTop');
+                
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                if (window.scrollY > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+            });
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        const overlay = document.getElementById('overlay');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            overlay.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        overlay.addEventListener('click', () => {
-            mainNav.classList.remove('active');
-            overlay.classList.remove('active');
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-        
-        // Page navigation - FIXED: All links now go to correct pages
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pages = document.querySelectorAll('.page');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+            // Scroll to top button
+            document.getElementById('scrollTop').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            const overlay = document.getElementById('overlay');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            overlay.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+            
+            // Page navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetPage = link.getAttribute('data-page');
+                    
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === targetPage) {
+                            page.classList.add('active');
+                            setTimeout(() => {
+                                initPageAnimations();
+                            }, 100);
+                        }
+                    });
+                    
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        overlay.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Form submission handling
+            const bookingForm = document.getElementById('bookingForm');
+            const contactForm = document.getElementById('contactForm');
+            
+            bookingForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
-                const targetPage = link.getAttribute('data-page');
+                const phoneInput = document.getElementById('phone');
+                const phoneRegex = /^[0-9]{10}$/;
                 
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
-                link.classList.add('active');
+                if (!phoneRegex.test(phoneInput.value.replace(/\D/g, ''))) {
+                    alert('Please enter a valid 10-digit Indian phone number');
+                    phoneInput.focus();
+                    return;
+                }
                 
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                    if (page.id === targetPage) {
-                        page.classList.add('active');
+                alert('Thank you for your security request! Our team will contact you within 2 hours to discuss your requirements.');
+                bookingForm.reset();
+            });
+            
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const contactPhone = document.getElementById('contactPhone');
+                const phoneRegex = /^[0-9]{10}$/;
+                
+                if (!phoneRegex.test(contactPhone.value.replace(/\D/g, ''))) {
+                    alert('Please enter a valid 10-digit Indian phone number');
+                    contactPhone.focus();
+                    return;
+                }
+                
+                alert('Thank you for your message! Our security team will respond within 24 hours.');
+                contactForm.reset();
+            });
+            
+            // Phone number formatting
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 10) value = value.substring(0, 10);
+                    
+                    if (value.length > 5) {
+                        value = value.substring(0, 5) + ' ' + value.substring(5);
+                    }
+                    if (value.length > 8) {
+                        value = value.substring(0, 8) + ' ' + value.substring(8);
+                    }
+                    
+                    e.target.value = value;
+                });
+            });
+            
+            // Initialize animations
+            function initPageAnimations() {
+                // Animate service cards
+                document.querySelectorAll('.service-card').forEach((card, index) => {
+                    if (!card.classList.contains('animated')) {
                         setTimeout(() => {
-                            initPageAnimations();
-                        }, 300);
+                            card.classList.add('animated');
+                        }, index * 100);
                     }
                 });
                 
-                if (mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    overlay.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                // Animate badges on about page
+                const expBadge = document.getElementById('expBadge');
+                const locBadge = document.getElementById('locBadge');
+                if (expBadge && locBadge) {
+                    setTimeout(() => {
+                        expBadge.style.opacity = '1';
+                        expBadge.style.transform = 'scale(1)';
+                    }, 300);
+                    setTimeout(() => {
+                        locBadge.style.opacity = '1';
+                        locBadge.style.transform = 'scale(1)';
+                    }, 600);
                 }
                 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-        
-        // Form submission handling
-        const bookingForm = document.getElementById('bookingForm');
-        const contactForm = document.getElementById('contactForm');
-        
-        bookingForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const phoneInput = document.getElementById('phone');
-            const phoneRegex = /^[0-9]{10}$/;
-            
-            if (!phoneRegex.test(phoneInput.value.replace(/\D/g, ''))) {
-                alert('Please enter a valid 10-digit Indian phone number');
-                phoneInput.focus();
-                return;
-            }
-            
-            alert('Thank you for your security request! Our team will contact you within 2 hours to discuss your requirements.');
-            bookingForm.reset();
-        });
-        
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const contactPhone = document.getElementById('contactPhone');
-            const phoneRegex = /^[0-9]{10}$/;
-            
-            if (!phoneRegex.test(contactPhone.value.replace(/\D/g, ''))) {
-                alert('Please enter a valid 10-digit Indian phone number');
-                contactPhone.focus();
-                return;
-            }
-            
-            alert('Thank you for your message! Our security team will respond within 24 hours.');
-            contactForm.reset();
-        });
-        
-        // Phone number formatting
-        const phoneInputs = document.querySelectorAll('input[type="tel"]');
-        
-        phoneInputs.forEach(input => {
-            input.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 10) value = value.substring(0, 10);
-                
-                if (value.length > 5) {
-                    value = value.substring(0, 5) + ' ' + value.substring(5);
-                }
-                if (value.length > 8) {
-                    value = value.substring(0, 8) + ' ' + value.substring(8);
-                }
-                
-                e.target.value = value;
-            });
-        });
-        
-        // Initialize animations
-        function initPageAnimations() {
-            // Animate service cards
-            document.querySelectorAll('.service-card').forEach((card, index) => {
-                if (!card.classList.contains('animated')) {
-                    setTimeout(() => {
-                        card.classList.add('animated');
-                    }, index * 100);
-                }
-            });
-            
-            // Animate badges on about page
-            const expBadge = document.getElementById('expBadge');
-            const locBadge = document.getElementById('locBadge');
-            if (expBadge && locBadge) {
-                setTimeout(() => {
-                    expBadge.style.opacity = '1';
-                    expBadge.style.transform = 'scale(1)';
-                }, 300);
-                setTimeout(() => {
-                    locBadge.style.opacity = '1';
-                    locBadge.style.transform = 'scale(1)';
-                }, 600);
-            }
-            
-            // Animate steps on booking page
-            document.querySelectorAll('.step').forEach((step, index) => {
-                if (!step.classList.contains('animated')) {
-                    setTimeout(() => {
-                        step.classList.add('animated');
-                    }, index * 200);
-                }
-            });
-            
-            // Animate contact items
-            document.querySelectorAll('.contact-item').forEach((item, index) => {
-                if (!item.classList.contains('animated')) {
-                    setTimeout(() => {
-                        item.classList.add('animated');
-                    }, index * 150);
-                }
-            });
-            
-            // Animate hero badges
-            const badge1 = document.getElementById('badge1');
-            const badge2 = document.getElementById('badge2');
-            const badge3 = document.getElementById('badge3');
-            if (badge1 && badge2 && badge3) {
-                setTimeout(() => {
-                    badge1.style.opacity = '1';
-                    badge1.style.transform = 'translateY(0)';
-                }, 500);
-                setTimeout(() => {
-                    badge2.style.opacity = '1';
-                    badge2.style.transform = 'translateY(0)';
-                }, 800);
-                setTimeout(() => {
-                    badge3.style.opacity = '1';
-                    badge3.style.transform = 'translateY(0)';
-                }, 1100);
-            }
-            
-            // Animate FAQ items
-            document.querySelectorAll('.faq-item').forEach((item, index) => {
-                if (!item.classList.contains('animated')) {
-                    setTimeout(() => {
-                        item.classList.add('animated');
-                    }, index * 150);
-                }
-            });
-        }
-        
-        // FAQ functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
-        
-        // Scroll animations
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    if (element.classList.contains('service-card')) {
-                        element.classList.add('animated');
-                    } else if (element.classList.contains('step')) {
-                        element.classList.add('animated');
-                    } else if (element.classList.contains('contact-item')) {
-                        element.classList.add('animated');
-                    } else if (element.classList.contains('advantage-card')) {
-                        element.classList.add('animated');
-                    } else if (element.classList.contains('faq-item')) {
-                        element.classList.add('animated');
+                // Animate steps on booking page
+                document.querySelectorAll('.step').forEach((step, index) => {
+                    if (!step.classList.contains('animated')) {
+                        setTimeout(() => {
+                            step.classList.add('animated');
+                        }, index * 200);
                     }
+                });
+                
+                // Animate contact items
+                document.querySelectorAll('.contact-item').forEach((item, index) => {
+                    if (!item.classList.contains('animated')) {
+                        setTimeout(() => {
+                            item.classList.add('animated');
+                        }, index * 150);
+                    }
+                });
+                
+                // Animate hero badges
+                const badge1 = document.getElementById('badge1');
+                const badge2 = document.getElementById('badge2');
+                const badge3 = document.getElementById('badge3');
+                if (badge1 && badge2 && badge3) {
+                    setTimeout(() => {
+                        badge1.style.opacity = '1';
+                        badge1.style.transform = 'translateY(0)';
+                    }, 500);
+                    setTimeout(() => {
+                        badge2.style.opacity = '1';
+                        badge2.style.transform = 'translateY(0)';
+                    }, 800);
+                    setTimeout(() => {
+                        badge3.style.opacity = '1';
+                        badge3.style.transform = 'translateY(0)';
+                    }, 1100);
                 }
+                
+                // Animate FAQ items
+                document.querySelectorAll('.faq-item').forEach((item, index) => {
+                    if (!item.classList.contains('animated')) {
+                        setTimeout(() => {
+                            item.classList.add('animated');
+                        }, index * 150);
+                    }
+                });
+            }
+            
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
             });
-        }
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', () => {
-            animateOnScroll();
-            initPageAnimations();
+            
+            // Scroll animations
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        if (element.classList.contains('service-card')) {
+                            element.classList.add('animated');
+                        } else if (element.classList.contains('step')) {
+                            element.classList.add('animated');
+                        } else if (element.classList.contains('contact-item')) {
+                            element.classList.add('animated');
+                        } else if (element.classList.contains('advantage-card')) {
+                            element.classList.add('animated');
+                        } else if (element.classList.contains('faq-item')) {
+                            element.classList.add('animated');
+                        } else if (element.classList.contains('testimonial-card')) {
+                            element.classList.add('animated');
+                        }
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('load', () => {
+                animateOnScroll();
+                initPageAnimations();
+            });
+            
+            // Initialize with home page active
+            document.querySelectorAll('.nav-link[data-page="home"]').forEach(link => link.classList.add('active'));
+            
+            // Add loading animation to images
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                    this.style.transition = 'opacity 0.3s ease';
+                });
+                img.style.opacity = '0';
+            });
         });
-        
-        // Initialize with home page active
-        document.querySelectorAll('.nav-link[data-page="home"]').forEach(link => link.classList.add('active'));
     </script>
 </body>
-
 </html>
