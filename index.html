@@ -23,7 +23,7 @@
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
             --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             --border-radius: 12px;
             --section-padding: 60px 0;
         }
@@ -47,6 +47,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            padding-bottom: 90px;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -129,6 +130,12 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
             padding: 10px 0;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
         }
         
         header.scrolled {
@@ -149,6 +156,7 @@
             gap: 10px;
             text-decoration: none;
             z-index: 1001;
+            animation: fadeInLeft 0.8s ease;
         }
         
         .logo-icon {
@@ -194,6 +202,7 @@
             justify-content: center;
             align-items: center;
             transition: var(--transition);
+            animation: fadeInRight 0.8s ease;
         }
         
         .mobile-menu-btn:hover {
@@ -272,11 +281,26 @@
             border-radius: 10px;
             transition: var(--transition);
             display: block;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInRight 0.5s ease forwards;
         }
+        
+        nav.active a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        nav a:nth-child(1) { animation-delay: 0.1s; }
+        nav a:nth-child(2) { animation-delay: 0.2s; }
+        nav a:nth-child(3) { animation-delay: 0.3s; }
+        nav a:nth-child(4) { animation-delay: 0.4s; }
+        nav a:nth-child(5) { animation-delay: 0.5s; }
         
         nav a:hover, nav a.active {
             background-color: rgba(10, 35, 66, 0.05);
             color: var(--secondary);
+            transform: translateX(5px);
         }
         
         .nav-footer {
@@ -314,13 +338,15 @@
             z-index: 1001;
             display: none;
             transition: var(--transition);
+            opacity: 0;
         }
         
         .overlay.active {
             display: block;
+            animation: fadeIn 0.3s ease forwards;
         }
         
-        /* Buttons - Mobile Optimized */
+        /* Buttons - Fixed Our Services Button */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -338,12 +364,14 @@
             text-align: center;
             box-shadow: 0 4px 15px rgba(217, 4, 41, 0.2);
             gap: 8px;
-            width: 100%;
+            width: auto;
+            min-width: 140px;
+            animation: fadeInUp 0.6s ease;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(217, 4, 41, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(217, 4, 41, 0.3);
         }
         
         .btn-outline {
@@ -351,12 +379,14 @@
             border: 2px solid var(--primary);
             color: var(--primary);
             box-shadow: none;
+            animation: fadeInUp 0.8s ease;
         }
         
         .btn-outline:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--primary);
         }
         
         .btn-sm {
@@ -376,12 +406,30 @@
             overflow: hidden;
         }
         
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(42, 157, 143, 0.2) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
         .hero-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 40px;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-content {
@@ -393,12 +441,14 @@
             margin-bottom: 15px;
             color: white;
             line-height: 1.1;
+            animation: fadeInUp 0.8s ease;
         }
         
         .hero p {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
         }
         
         .hero-btns {
@@ -406,6 +456,17 @@
             flex-direction: column;
             gap: 15px;
             margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-btns {
+                flex-direction: row;
+            }
+            
+            .hero-btns .btn {
+                width: auto;
+            }
         }
         
         .hero-stats {
@@ -413,6 +474,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-top: 30px;
+            animation: fadeInUp 1.4s ease;
         }
         
         .stat-item {
@@ -424,6 +486,12 @@
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .stat-number {
@@ -459,10 +527,17 @@
             transition: var(--transition);
             height: 100%;
             border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-hover);
         }
         
@@ -474,6 +549,12 @@
             justify-content: center;
             font-size: 1.8rem;
             color: white;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            transform: scale(1.1);
         }
         
         .service-content {
@@ -484,6 +565,11 @@
             color: var(--primary);
             margin-bottom: 10px;
             font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-content h3 {
+            color: var(--secondary);
         }
         
         .service-features {
@@ -497,13 +583,31 @@
             align-items: flex-start;
             gap: 10px;
             font-size: 0.9rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition);
         }
+        
+        .service-card.animate .service-features li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .service-features li:nth-child(1) { transition-delay: 0.1s; }
+        .service-features li:nth-child(2) { transition-delay: 0.2s; }
+        .service-features li:nth-child(3) { transition-delay: 0.3s; }
         
         .service-features i {
             color: var(--accent);
             font-size: 0.8rem;
             margin-top: 3px;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-features i {
+            color: var(--secondary);
+            transform: scale(1.2);
         }
         
         /* About Section */
@@ -515,11 +619,25 @@
         
         .about-content {
             order: 2;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .about-content.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .about-image {
             order: 1;
             position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        .about-image.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .about-img-main {
@@ -528,6 +646,12 @@
             border-radius: var(--border-radius);
             object-fit: cover;
             box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+        }
+        
+        .about-img-main:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         /* Booking Section */
@@ -546,6 +670,13 @@
             padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-hover);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .booking-form-container.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .booking-steps {
@@ -557,7 +688,19 @@
             gap: 15px;
             margin-bottom: 25px;
             align-items: flex-start;
+            opacity: 0;
+            transform: translateX(-20px);
         }
+        
+        .step.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .step:nth-child(1) { transition-delay: 0.1s; }
+        .step:nth-child(2) { transition-delay: 0.2s; }
+        .step:nth-child(3) { transition-delay: 0.3s; }
+        .step:nth-child(4) { transition-delay: 0.4s; }
         
         .step-number {
             width: 44px;
@@ -571,6 +714,12 @@
             color: white;
             font-size: 1.1rem;
             font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
         }
         
         /* Form Styles */
@@ -601,6 +750,7 @@
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+            transform: translateY(-2px);
         }
         
         .form-row {
@@ -622,6 +772,13 @@
             padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-hover);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .contact-info.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .contact-info h3 {
@@ -651,7 +808,19 @@
             align-items: flex-start;
             gap: 15px;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-20px);
         }
+        
+        .contact-item.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .contact-item:nth-child(1) { transition-delay: 0.1s; }
+        .contact-item:nth-child(2) { transition-delay: 0.2s; }
+        .contact-item:nth-child(3) { transition-delay: 0.3s; }
+        .contact-item:nth-child(4) { transition-delay: 0.4s; }
         
         .contact-icon {
             width: 40px;
@@ -664,6 +833,12 @@
             font-size: 1rem;
             color: white;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            background: var(--secondary);
+            transform: scale(1.1) rotate(10deg);
         }
         
         /* Footer */
@@ -671,6 +846,13 @@
             background: var(--primary-dark);
             color: white;
             padding: 50px 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        footer.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .footer-content {
@@ -696,7 +878,20 @@
         
         .footer-links li {
             margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(-10px);
         }
+        
+        footer.animate .footer-links li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        footer.animate .footer-links li:nth-child(1) { transition-delay: 0.1s; }
+        footer.animate .footer-links li:nth-child(2) { transition-delay: 0.2s; }
+        footer.animate .footer-links li:nth-child(3) { transition-delay: 0.3s; }
+        footer.animate .footer-links li:nth-child(4) { transition-delay: 0.4s; }
+        footer.animate .footer-links li:nth-child(5) { transition-delay: 0.5s; }
         
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
@@ -708,7 +903,7 @@
         
         .footer-links a:hover {
             color: white;
-            transform: translateX(3px);
+            transform: translateX(5px);
         }
         
         .copyright {
@@ -722,16 +917,21 @@
         /* Page Transitions */
         .page {
             display: none;
-            animation: fadeIn 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
         .page.active {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: pageFadeIn 0.6s ease;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         /* Advantages Section */
@@ -754,10 +954,17 @@
             box-shadow: var(--shadow-card);
             transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .advantage-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .advantage-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05);
             box-shadow: var(--shadow-hover);
         }
         
@@ -772,6 +979,12 @@
             margin: 0 auto 15px;
             font-size: 1.5rem;
             color: white;
+            transition: var(--transition);
+        }
+        
+        .advantage-card:hover .advantage-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            transform: scale(1.1) rotate(10deg);
         }
         
         /* FAQ Section */
@@ -792,6 +1005,13 @@
             overflow: hidden;
             box-shadow: var(--shadow-card);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .faq-item.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .faq-question {
@@ -807,6 +1027,8 @@
         
         .faq-question:hover {
             background: #f8f9fa;
+            color: var(--secondary);
+            transform: translateX(5px);
         }
         
         .faq-question i {
@@ -828,12 +1050,13 @@
         
         .faq-item.active .faq-question i {
             transform: rotate(180deg);
+            color: var(--secondary);
         }
         
-        /* WhatsApp Float */
+        /* FLOATING BUTTONS */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
+            bottom: 90px;
             right: 20px;
             width: 56px;
             height: 56px;
@@ -846,13 +1069,49 @@
             font-size: 1.8rem;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
             transition: var(--transition);
-            z-index: 999;
+            z-index: 998;
             text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: floatIn 0.6s ease 1s forwards;
         }
         
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        .call-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(10, 35, 66, 0.3);
+            transition: var(--transition);
+            z-index: 998;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: floatIn 0.6s ease 1.2s forwards;
+        }
+        
+        @keyframes floatIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .whatsapp-float:hover, .call-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Add space at bottom for floating buttons on mobile */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 100px;
+            }
         }
         
         /* Pricing Note */
@@ -863,6 +1122,12 @@
             text-align: center;
             margin-top: 15px;
             border-left: 3px solid var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .pricing-note {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(42, 157, 143, 0.12), rgba(217, 4, 41, 0.12));
         }
         
         /* Service Tag */
@@ -875,6 +1140,13 @@
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-tag {
+            background: rgba(217, 4, 41, 0.1);
+            color: var(--secondary);
+            transform: translateY(-2px);
         }
         
         /* Trust Indicators */
@@ -898,107 +1170,73 @@
             color: var(--accent);
         }
         
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 85px;
-            right: 20px;
-            width: 56px;
-            height: 56px;
-            background: var(--primary);
-            border-radius: 50%;
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .badge {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 6px 20px rgba(10, 35, 66, 0.3);
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .badge.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .badge:nth-child(1) { transition-delay: 0.1s; }
+        .badge:nth-child(2) { transition-delay: 0.2s; }
+        .badge:nth-child(3) { transition-delay: 0.3s; }
+        
+        .badge i {
+            color: var(--accent);
+            font-size: 1rem;
             transition: var(--transition);
-            z-index: 998;
-            text-decoration: none;
-            cursor: pointer;
         }
         
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(10, 35, 66, 0.4);
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
         
-        /* Responsive */
-        @media (min-width: 576px) {
-            html { font-size: 15px; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .hero h1 { font-size: 2.3rem; }
-            .hero-stats { gap: 20px; }
-            .stat-item { padding: 20px 15px; }
-            .stat-number { font-size: 1.8rem; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .advantages-grid { grid-template-columns: repeat(2, 1fr); }
-            .form-row { flex-direction: row; }
+        .badge:hover i {
+            color: var(--secondary);
+            transform: scale(1.2);
         }
         
-        @media (min-width: 768px) {
-            html { font-size: 16px; }
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 2.3rem; }
-            .hero { padding-top: 140px; padding-bottom: 80px; }
-            .hero h1 { font-size: 2.6rem; }
-            .hero-btns { flex-direction: row; }
-            .hero-btns .btn { width: auto; }
-            .hero-container { flex-direction: row; text-align: left; }
-            .hero-content { text-align: left; }
-            .hero-stats { justify-content: flex-start; }
-            .about-container { flex-direction: row; }
-            .about-content { order: 1; }
-            .about-image { order: 2; }
-            .booking-container { flex-direction: row; }
-            .booking-steps { order: 1; }
-            .booking-form-container { order: 2; }
-            .contact-container { flex-direction: row; }
-            .footer-content { grid-template-columns: repeat(2, 1fr); }
-            .advantages-grid { grid-template-columns: repeat(4, 1fr); }
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        @media (min-width: 992px) {
-            .services-grid { grid-template-columns: repeat(3, 1fr); }
-            .footer-content { grid-template-columns: repeat(4, 1fr); }
-            .hero h1 { font-size: 3rem; }
-            .about-img-main { height: 400px; }
-        }
-        
-        @media (max-width: 991px) {
-            .header-cta { display: none; }
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-        
-        .slide-up {
-            animation: slideUp 0.6s ease forwards;
-        }
-        
-        .slide-in-left {
-            animation: slideInLeft 0.6s ease forwards;
-        }
-        
-        .slide-in-right {
-            animation: slideInRight 0.6s ease forwards;
-        }
-        
-        @keyframes slideUp {
+        @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes slideInLeft {
+        @keyframes fadeInLeft {
             from { opacity: 0; transform: translateX(-30px); }
             to { opacity: 1; transform: translateX(0); }
         }
         
-        @keyframes slideInRight {
+        @keyframes fadeInRight {
             from { opacity: 0; transform: translateX(30px); }
             to { opacity: 1; transform: translateX(0); }
         }
@@ -1031,32 +1269,52 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Trust Badges */
-        .trust-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
+        /* Responsive */
+        @media (min-width: 576px) {
+            html { font-size: 15px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.3rem; }
+            .hero-stats { gap: 20px; }
+            .stat-item { padding: 20px 15px; }
+            .stat-number { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+            .form-row { flex-direction: row; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+            .badge { animation: fadeInUp 0.6s ease forwards; }
         }
         
-        .badge {
-            background: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+        @media (min-width: 768px) {
+            html { font-size: 16px; }
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.3rem; }
+            .hero { padding-top: 140px; padding-bottom: 80px; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-container { flex-direction: row; text-align: left; }
+            .hero-content { text-align: left; }
+            .hero-stats { justify-content: flex-start; }
+            .about-container { flex-direction: row; }
+            .about-content { order: 1; }
+            .about-image { order: 2; }
+            .booking-container { flex-direction: row; }
+            .booking-steps { order: 1; }
+            .booking-form-container { order: 2; }
+            .contact-container { flex-direction: row; }
+            .advantages-grid { grid-template-columns: repeat(4, 1fr); }
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-content { grid-template-columns: repeat(4, 1fr); }
+            .call-float { bottom: 90px; right: 90px; }
+            .whatsapp-float { bottom: 20px; right: 20px; }
         }
         
-        .badge i {
-            color: var(--accent);
-            font-size: 1rem;
+        @media (min-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .about-img-main { height: 400px; }
+        }
+        
+        @media (max-width: 991px) {
+            .header-cta { display: none; }
         }
     </style>
 </head>
@@ -1128,10 +1386,11 @@
         <section id="home" class="page active">
             <div class="hero">
                 <div class="container hero-container">
-                    <div class="hero-content slide-in-left">
+                    <div class="hero-content">
                         <h1>Maharashtra's Premier Security Solutions</h1>
                         <p>Professional security services with 500+ trained guards across Maharashtra. 24/7 protection for residential, commercial, and industrial sectors.</p>
                         
+                        <!-- FIXED: Our Services button is now clearly visible -->
                         <div class="hero-btns">
                             <a href="#" class="btn nav-link" data-page="booking">
                                 <i class="fas fa-shield-alt"></i> Book Security Now
@@ -1161,7 +1420,7 @@
 
             <!-- Trust Badges -->
             <section class="container">
-                <div class="trust-badges slide-up">
+                <div class="trust-badges">
                     <div class="badge">
                         <i class="fas fa-check-circle"></i>
                         <span>Police Verified Guards</span>
@@ -1186,7 +1445,7 @@
                     </div>
                     
                     <div class="advantages-grid">
-                        <div class="advantage-card slide-up">
+                        <div class="advantage-card">
                             <div class="advantage-icon">
                                 <i class="fas fa-user-shield"></i>
                             </div>
@@ -1194,7 +1453,7 @@
                             <p>All guards undergo strict background checks, police verification, and thorough screening.</p>
                         </div>
                         
-                        <div class="advantage-card slide-up">
+                        <div class="advantage-card">
                             <div class="advantage-icon">
                                 <i class="fas fa-bolt"></i>
                             </div>
@@ -1202,7 +1461,7 @@
                             <p>Security personnel deployed within 24 hours anywhere in Maharashtra.</p>
                         </div>
                         
-                        <div class="advantage-card slide-up">
+                        <div class="advantage-card">
                             <div class="advantage-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
@@ -1210,7 +1469,7 @@
                             <p>Round-the-clock surveillance and rapid response teams always on standby.</p>
                         </div>
                         
-                        <div class="advantage-card slide-up">
+                        <div class="advantage-card">
                             <div class="advantage-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
@@ -1230,7 +1489,7 @@
                     </div>
                     
                     <div class="services-grid">
-                        <div class="service-card slide-up">
+                        <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-home"></i>
                             </div>
@@ -1249,7 +1508,7 @@
                             </div>
                         </div>
                         
-                        <div class="service-card slide-up">
+                        <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-industry"></i>
                             </div>
@@ -1268,7 +1527,7 @@
                             </div>
                         </div>
                         
-                        <div class="service-card slide-up">
+                        <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-hospital"></i>
                             </div>
@@ -1305,7 +1564,7 @@
                     </div>
                     
                     <div class="faq-container">
-                        <div class="faq-item slide-up">
+                        <div class="faq-item">
                             <div class="faq-question">
                                 <span>What areas in Maharashtra do you serve?</span>
                                 <i class="fas fa-chevron-down"></i>
@@ -1315,7 +1574,7 @@
                             </div>
                         </div>
                         
-                        <div class="faq-item slide-up">
+                        <div class="faq-item">
                             <div class="faq-question">
                                 <span>How quickly can you deploy security guards?</span>
                                 <i class="fas fa-chevron-down"></i>
@@ -1325,7 +1584,7 @@
                             </div>
                         </div>
                         
-                        <div class="faq-item slide-up">
+                        <div class="faq-item">
                             <div class="faq-question">
                                 <span>Are your guards trained and verified?</span>
                                 <i class="fas fa-chevron-down"></i>
@@ -1348,7 +1607,7 @@
                 </div>
                 
                 <div class="services-grid">
-                    <div class="service-card slide-up">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-university"></i>
                         </div>
@@ -1367,7 +1626,7 @@
                         </div>
                     </div>
                     
-                    <div class="service-card slide-up">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-school"></i>
                         </div>
@@ -1386,7 +1645,7 @@
                         </div>
                     </div>
                     
-                    <div class="service-card slide-up">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
@@ -1405,7 +1664,7 @@
                         </div>
                     </div>
                     
-                    <div class="service-card slide-up">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-hotel"></i>
                         </div>
@@ -1424,7 +1683,7 @@
                         </div>
                     </div>
                     
-                    <div class="service-card slide-up">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-truck"></i>
                         </div>
@@ -1443,7 +1702,7 @@
                         </div>
                     </div>
                     
-                    <div class="service-card slide-up">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
@@ -1516,7 +1775,7 @@
                     </div>
                     
                     <div class="booking-container">
-                        <div class="booking-form-container slide-up">
+                        <div class="booking-form-container">
                             <form id="bookingForm">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -1580,7 +1839,7 @@
                         <div class="booking-steps">
                             <h3>Simple 4-Step Process</h3>
                             
-                            <div class="step slide-up">
+                            <div class="step">
                                 <div class="step-number">1</div>
                                 <div>
                                     <h4>Submit Request</h4>
@@ -1588,7 +1847,7 @@
                                 </div>
                             </div>
                             
-                            <div class="step slide-up">
+                            <div class="step">
                                 <div class="step-number">2</div>
                                 <div>
                                     <h4>Security Consultation</h4>
@@ -1596,7 +1855,7 @@
                                 </div>
                             </div>
                             
-                            <div class="step slide-up">
+                            <div class="step">
                                 <div class="step-number">3</div>
                                 <div>
                                     <h4>Customized Plan</h4>
@@ -1604,7 +1863,7 @@
                                 </div>
                             </div>
                             
-                            <div class="step slide-up">
+                            <div class="step">
                                 <div class="step-number">4</div>
                                 <div>
                                     <h4>Deployment</h4>
@@ -1612,7 +1871,7 @@
                                 </div>
                             </div>
                             
-                            <div class="slide-up" style="background: linear-gradient(135deg, rgba(10, 35, 66, 0.05), rgba(5, 18, 38, 0.05)); padding: 20px; border-radius: var(--border-radius); margin-top: 25px;">
+                            <div style="background: linear-gradient(135deg, rgba(10, 35, 66, 0.05), rgba(5, 18, 38, 0.05)); padding: 20px; border-radius: var(--border-radius); margin-top: 25px;">
                                 <h4><i class="fas fa-headset" style="color: var(--secondary); margin-right: 10px;"></i> Need Immediate Assistance?</h4>
                                 <p>Call our 24/7 security hotline for urgent requirements or consultation.</p>
                                 <div class="mobile-phone" style="font-size: 1.2rem; margin-top: 10px;">
@@ -1635,7 +1894,7 @@
                 </div>
                 
                 <div class="contact-container">
-                    <div class="contact-info slide-up">
+                    <div class="contact-info">
                         <h3>Contact Information</h3>
                         <p>Reach out to our security operations center for immediate assistance or consultation regarding your security needs across Maharashtra.</p>
                         
@@ -1682,7 +1941,7 @@
                         </div>
                     </div>
                     
-                    <div class="slide-up">
+                    <div>
                         <h3>Send Us a Message</h3>
                         <form id="contactForm">
                             <div class="form-group">
@@ -1774,41 +2033,150 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
+    <!-- FLOATING BUTTONS -->
     <a href="https://wa.me/919607810111?text=Hi%20Kakad%20Security,%20I%20need%20information%20about%20security%20services" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Call Button -->
-    <a href="tel:9607810111" class="fab">
+    <a href="tel:9607810111" class="call-float">
         <i class="fas fa-phone-alt"></i>
     </a>
 
     <script>
-        // Wait for page to load
-        window.addEventListener('load', function() {
-            // Hide loading screen
-            setTimeout(() => {
-                document.getElementById('loading').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
-                }, 500);
-            }, 800);
-            
-            // Initialize animations
-            initAnimations();
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 30) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Smart Animation System
+        class SmartAnimations {
+            constructor() {
+                this.observers = [];
+                this.init();
             }
-        });
-
+            
+            init() {
+                // Hide loading screen
+                setTimeout(() => {
+                    document.getElementById('loading').style.opacity = '0';
+                    setTimeout(() => {
+                        document.getElementById('loading').style.display = 'none';
+                        this.startPageAnimations();
+                    }, 500);
+                }, 800);
+                
+                // Initialize intersection observer
+                this.initIntersectionObserver();
+                
+                // Initialize scroll animations
+                this.initScrollAnimations();
+            }
+            
+            initIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const element = entry.target;
+                            
+                            // Add animation class based on element type
+                            if (element.classList.contains('service-card')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('advantage-card')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('step')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('contact-item')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('faq-item')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('badge')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('about-content')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('about-image')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('booking-form-container')) {
+                                element.classList.add('animate');
+                            } else if (element.classList.contains('contact-info')) {
+                                element.classList.add('animate');
+                            } else if (element.tagName === 'FOOTER') {
+                                element.classList.add('animate');
+                            }
+                            
+                            // Animate service features with delay
+                            if (element.classList.contains('service-card')) {
+                                const features = element.querySelectorAll('.service-features li');
+                                features.forEach((feature, index) => {
+                                    setTimeout(() => {
+                                        feature.style.opacity = '1';
+                                        feature.style.transform = 'translateX(0)';
+                                    }, 300 + (index * 100));
+                                });
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                // Observe all animatable elements
+                document.querySelectorAll('.service-card, .advantage-card, .step, .contact-item, .faq-item, .badge, .about-content, .about-image, .booking-form-container, .contact-info, footer').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            initScrollAnimations() {
+                // Header scroll effect
+                window.addEventListener('scroll', () => {
+                    const header = document.getElementById('header');
+                    if (window.scrollY > 30) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            startPageAnimations() {
+                // Animate hero elements with delays
+                const heroElements = document.querySelectorAll('.hero h1, .hero p, .hero-btns, .hero-stats');
+                heroElements.forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 300 + (index * 200));
+                });
+                
+                // Make sure "Our Services" button is visible
+                const servicesBtn = document.querySelector('.btn-outline.nav-link[data-page="services"]');
+                if (servicesBtn) {
+                    servicesBtn.style.display = 'inline-flex';
+                    servicesBtn.style.visibility = 'visible';
+                    servicesBtn.style.opacity = '1';
+                }
+            }
+            
+            animatePageTransition(page) {
+                // Add fade in animation to new page
+                page.style.animation = 'pageFadeIn 0.6s ease';
+                
+                // Reset and animate elements on new page
+                setTimeout(() => {
+                    const animatableElements = page.querySelectorAll('.service-card, .advantage-card, .step, .contact-item, .faq-item, .badge, .about-content, .about-image, .booking-form-container, .contact-info');
+                    animatableElements.forEach(el => {
+                        el.classList.remove('animate');
+                        void el.offsetWidth; // Trigger reflow
+                    });
+                    
+                    // Re-observe elements for animations
+                    this.initIntersectionObserver();
+                }, 100);
+            }
+        }
+        
+        // Initialize smart animations
+        const animations = new SmartAnimations();
+        
         // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navClose = document.getElementById('navClose');
@@ -1819,6 +2187,12 @@
             mainNav.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Animate nav items
+            const navItems = mainNav.querySelectorAll('a');
+            navItems.forEach((item, index) => {
+                item.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+            });
         }
         
         function closeMobileMenu() {
@@ -1831,11 +2205,6 @@
         navClose.addEventListener('click', closeMobileMenu);
         overlay.addEventListener('click', closeMobileMenu);
         
-        // Close menu when clicking on a nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
         // Page navigation
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
@@ -1850,22 +2219,22 @@
                 navLinks.forEach(navLink => navLink.classList.remove('active'));
                 link.classList.add('active');
                 
-                // Show target page
+                // Show target page with animation
                 pages.forEach(page => {
                     page.classList.remove('active');
                     if (page.id === targetPage) {
                         page.classList.add('active');
-                        setTimeout(() => {
-                            initAnimations();
-                        }, 100);
+                        animations.animatePageTransition(page);
                     }
                 });
+                
+                closeMobileMenu();
                 
                 // Scroll to top
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
-
+        
         // Form submission handling
         const bookingForm = document.getElementById('bookingForm');
         const contactForm = document.getElementById('contactForm');
@@ -1903,7 +2272,7 @@
             showNotification('Message sent! We will respond within 24 hours.', 'success');
             contactForm.reset();
         });
-
+        
         // Phone number formatting
         const phoneInputs = document.querySelectorAll('input[type="tel"]');
         
@@ -1922,39 +2291,25 @@
                 e.target.value = value;
             });
         });
-
+        
         // FAQ functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current FAQ
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
             });
         });
-
-        // Animation on scroll
-        function initAnimations() {
-            const animatedElements = document.querySelectorAll('.slide-up, .slide-in-left, .slide-in-right');
-            
-            animatedElements.forEach((element, index) => {
-                // Remove any existing animation classes
-                element.classList.remove('slide-up', 'slide-in-left', 'slide-in-right');
-                
-                // Force reflow
-                void element.offsetWidth;
-                
-                // Add animation class with delay
-                setTimeout(() => {
-                    if (element.classList.contains('slide-up')) {
-                        element.classList.add('slide-up');
-                    } else if (element.classList.contains('slide-in-left')) {
-                        element.classList.add('slide-in-left');
-                    } else if (element.classList.contains('slide-in-right')) {
-                        element.classList.add('slide-in-right');
-                    }
-                }, index * 100);
-            });
-        }
-
+        
         // Notification system
         function showNotification(message, type = 'success') {
             // Remove existing notification
@@ -1987,41 +2342,52 @@
                 }, 300);
             }, 5000);
         }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add animation classes to initial elements
-            setTimeout(() => {
-                initAnimations();
-            }, 500);
+        
+        // Hover animations for interactive elements
+        document.querySelectorAll('.service-card, .advantage-card, .stat-item, .badge').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
             
-            // Add smooth scrolling to all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+            card.addEventListener('mouseleave', () => {
+                if (!card.classList.contains('animate')) return;
+                card.style.transform = 'translateY(0) scale(1)';
             });
         });
-
-        // Make sure "Our Services" button is visible
-        document.addEventListener('DOMContentLoaded', function() {
-            const servicesBtn = document.querySelector('.btn-outline.nav-link[data-page="services"]');
-            if (servicesBtn) {
-                servicesBtn.style.display = 'inline-flex';
-                servicesBtn.style.visibility = 'visible';
-                servicesBtn.style.opacity = '1';
+        
+        // Initialize floating button positions
+        function positionFloatingButtons() {
+            const whatsappBtn = document.querySelector('.whatsapp-float');
+            const callBtn = document.querySelector('.call-float');
+            
+            if (window.innerWidth >= 768) {
+                // Desktop: buttons side by side
+                whatsappBtn.style.right = '20px';
+                whatsappBtn.style.bottom = '20px';
+                callBtn.style.right = '90px';
+                callBtn.style.bottom = '20px';
+            } else {
+                // Mobile: buttons stacked
+                whatsappBtn.style.right = '20px';
+                whatsappBtn.style.bottom = '90px';
+                callBtn.style.right = '20px';
+                callBtn.style.bottom = '20px';
             }
-        });
+        }
+        
+        // Update button positions on resize
+        window.addEventListener('resize', positionFloatingButtons);
+        window.addEventListener('load', positionFloatingButtons);
+        
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
